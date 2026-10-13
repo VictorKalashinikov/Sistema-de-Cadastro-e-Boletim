@@ -1,3 +1,5 @@
+# utilidades
+
 def leiaInt(msg):
     try:
         num = int(input(msg))
@@ -13,3 +15,6 @@ def leiaFloat(msg):
         print('Por favor digite um número real válido.')
     else:
         return num
+
+
+    

@@ -1,3 +1,5 @@
+#main
+
 from utilidades import leiaInt, leiaFloat
 alunos = []
 
@@ -52,6 +54,7 @@ while True:
     [3] Consultar aluno
     [4] Calcular estatísticas
     [5] Editar aluno
+    [6] Excluir aluno
     =====================================
     ''')
     escolha = escolher()
@@ -140,6 +143,26 @@ while True:
                         print('Opção inválida!')
             else:
                 mostrar_invalido()
+
+        case 6:
+            print('EXCLUIR ALUNO')
+            encontrou, indice, aluno = procura_aluno(alunos)
+            if encontrou:
+                mostrar_aluno(indice, aluno)
+                while True:
+                    try:
+                        confirmacao = input(f'Atenção! Gostaria realmente de excluir o aluno {aluno["nome"]}? [S/N] ').strip().upper()[0]
+                    except IndexError:
+                        print('Usuário preferiu não responder.')
+                    else:
+                        if confirmacao in 'SN':
+                            break
+                        print('Resposta inválida. Somente SIM ou Não.')
+                if confirmacao == 'S':
+                    alunos.pop(indice)
+            else:
+                nao_encontrado()
+
         case _:
             mostrar_invalido()
             continue
