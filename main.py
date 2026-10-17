@@ -43,6 +43,14 @@ def atualiza_media_situacao(aluno):
         aluno['situacao'] = 'Reprovado'
     return aluno
 
+# leiaNota(msg)
+def leiaNota(msg):
+    while True:
+        nota = leiaFloat(msg)
+        if 0 <= nota <= 10:
+            break
+        print('Por favor insira uma nota entre 0 e 10.')
+    return nota
 
 
 while True:
@@ -66,15 +74,8 @@ while True:
             aluno = {}
             aluno['nome'] = input('Nome do aluno(a): ').strip()
             aluno['idade'] = leiaInt('Idade: ')
-            while True:
-                aluno['nota1'] = leiaFloat('Primeira nota: ')
-                if 0 <= aluno['nota1'] <= 10:
-                    break
-                print('Por favor insira uma nota entre 0 e 10.')
-            while True:
-                aluno['nota2'] = leiaFloat('Segunda nota: ')
-                if 0 <= aluno['nota2'] <= 10:
-                    break
+            aluno['nota1'] = leiaNota('Primeira nota: ')
+            aluno['nota2'] = leiaNota('Segunda nota: ')
             aluno = atualiza_media_situacao(aluno)
             print(f"{aluno['nome']} está {aluno['situacao']}")
             alunos.append(aluno)
@@ -135,31 +136,15 @@ while True:
                         aluno['idade'] = leiaInt('Nova idade: ')
                         alunos[indice] = aluno
                     case 2:
-                        while True:
-                            aluno['nota1'] = leiaFloat('Nova nota 1: ')
-                            if 0 <= aluno['nota1'] <= 10:
-                                break
-                            print('Por favor insira uma nota entre 0 e 10.')
-                        while True:
-                            aluno['nota2'] = leiaFloat('Nova nota 2: ')
-                            if 0 <= aluno['nota2'] <= 10:
-                                break
-                            print('Por favor insira uma nota entre 0 e 10.')
+                        aluno['nota1'] = leiaNota('Nova nota 1: ')
+                        aluno['nota2'] = leiaNota('Nova nota 2: ')
                         aluno = atualiza_media_situacao(aluno)
                         print(f"{aluno['nome']} está {aluno['situacao']}")
 
                     case 3:
                         aluno['idade'] = leiaInt('Nova idade: ')
-                        while True:
-                            aluno['nota1'] = leiaFloat('Nova nota 1: ')
-                            if 0 <= aluno['nota1'] <= 10:
-                                break
-                            print('Por favor insira uma nota entre 0 e 10.')
-                        while True:
-                            aluno['nota2'] = leiaFloat('Nova nota 2: ')
-                            if 0 <= aluno['nota2'] <= 10:
-                                break
-                            print('Por favor insira uma nota entre 0 e 10.')
+                        aluno['nota1'] = leiaNota('Nova nota 1: ')
+                        aluno['nota2'] = leiaNota('Nova nota 2: ')
                         atualiza_media_situacao(aluno)
                         print(f"{aluno['nome']} está {aluno['situacao']}")
                     case _:
